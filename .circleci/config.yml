@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:stable-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+          cd .circleci
+          docker login -u terrorjack -p $DOCKER_PASS
+          docker build -t terrorjack/chromebox .
+          docker push terrorjack/chromebox
