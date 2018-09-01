@@ -1,13 +1,15 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: docker:stable-git
+    machine:
+      enabled: true
+      image: circleci/classic:201808-01
     steps:
       - checkout
-      - setup_remote_docker
       - run: |
           cd .circleci
+          sudo cp daemon.json /etc/docker/
+          sudo systemctl restart docker
           docker login -u terrorjack -p $DOCKER_PASS
-          docker build -t terrorjack/chromebox .
+          docker build --squash -t terrorjack/chromebox .
           docker push terrorjack/chromebox
