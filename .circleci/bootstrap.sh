@@ -1,6 +1,5 @@
 #!/bin/sh -e
 
-apt-mark hold dash
 apt update
 apt full-upgrade -y
 apt install -y \

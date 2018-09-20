@@ -1,4 +1,4 @@
-FROM debian:unstable-slim
+FROM debian:unstable
 
 ENV LANG=C.UTF-8
 
