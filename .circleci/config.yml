@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      image: docker:edge-git
+      - image: docker:edge-git
     steps:
       - setup_remote_docker
       - checkout
